@@ -10,20 +10,28 @@ It provisions infrastructure on AWS, builds a containerized application, and dep
 - **Cloud Hosting:** Application hosted on AWS S3 for static content.
 - **Scalable & Secure:** AWS best practices for high availability and security.
 
+## Technologies Used
+- **Jenkins** - CI/CD automation
+- **Terraform** - Infrastructure provisioning
+- **Docker** - Containerization
+- **AWS S3** - Hosting static content
+- **GitHub** - Version control
+
+
 ## Project Structure
 
 ```bash
 .
-├── backend.tf
-├── Dockerfile
-├── index.html
-├── Jenkinsfile
-├── main.tf
-├── provider.tf
-├── variable.tf
+├── backend.tf       # Terraform backend configuration
+├── Dockerfile       # Defines the Docker image for the banking app
+├── index.html       # Frontend static content for banking app
+├── Jenkinsfile      # CI/CD pipeline automation
+├── main.tf          # Terraform resources (EC2, S3, etc.)
+├── provider.tf      # Configures Terraform provider (AWS)
+├── variable.tf      # Terraform variables
 ```
 
-### Clickable File Links
+###  File Links
 - [backend.tf](backend.tf)
 - [Dockerfile](Dockerfile)
 - [index.html](index.html)
@@ -36,7 +44,7 @@ It provisions infrastructure on AWS, builds a containerized application, and dep
 
 ### Automated CI/CD Pipeline (Jenkins)
 1. **Infrastructure Provisioning:**
-   - Jenkins fetches the Terraform code and runs `terraform init`, `terraform plan`, and `terraform apply` to provision AWS resources (EC2, S3, and networking).
+   - Jenkins fetches the Terraform code and runs `terraform init`, `terraform plan`, and `terraform apply` to provision AWS resources (EC2, S3).
    
 2. **Building the Application:**
    - Jenkins retrieves the application code, builds the container image using Docker, and pushes it to Docker Hub.
