@@ -43,7 +43,7 @@ pipeline {
             }
             steps {
                 script {
-                    withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
+                    withAWS(credentials: AWS-DOCKER-CREDENTIALS, region: 'ap-south-1') {
                         dir('terraform') {
                             sh 'terraform apply -auto-approve tfplan'
                         }
@@ -73,7 +73,7 @@ pipeline {
             }
             steps {
                 script {
-                    withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
+                    withAWS(credentials: AWS-DOCKER-CREDENTIALS, region: 'ap-south-1') {
                         sh """
                             aws s3 cp index.html s3://${env.S3_BUCKET}/index.html --acl public-read
                         """
