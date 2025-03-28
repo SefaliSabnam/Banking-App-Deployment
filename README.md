@@ -71,7 +71,10 @@ A simple web interface for the banking app that allows:
 
 ## Animated Banking App Interface
 
-![Banking App Animation](https://user-images.githubusercontent.com/example/animated-banking.gif)
+### Preview the Animation
+
+
+[![Banking App Animation](https://user-images.githubusercontent.com/example/animated-banking.gif)](https://user-images.githubusercontent.com/example/animated-banking.gif)
 
 ## Conclusion
 This project provides a scalable and automated deployment of a simple banking application using DevOps best practices. 🚀
