@@ -1,80 +1,69 @@
-# Banking-App Deployment
+#  Banking App Deployment
 
-## Overview
-This project automates the deployment of a Banking Web Application using **Terraform**, **Docker**, and **Jenkins**. It provisions infrastructure on AWS, builds a containerized application, and deploys it efficiently.
+This project automates the deployment of a simple banking application using **Docker, Terraform, Jenkins, and AWS**. It provisions infrastructure, builds and deploys a containerized app, and hosts the frontend on **AWS S3**.
 
-## Project Structure
+##  Project Structure
+```plaintext
+📦 banking-app-deployment
+├── 📄 backend.tf         # Terraform backend configuration
+├── 📄 Dockerfile        # Docker container setup for the banking app
+├── 📄 index.html        # Frontend for the banking app
+├── 📄 Jenkinsfile       # CI/CD pipeline for automated deployment
+├── 📄 main.tf           # Terraform infrastructure setup
+├── 📄 provider.tf       # AWS provider configuration
+├── 📄 variable.tf       # Terraform variable definitions
 ```
-📂 Banking-App-Deployment
-├── [backend.tf](backend.tf)        # Terraform backend configuration
-├── [main.tf](main.tf)              # Terraform infrastructure configuration
-├── [provider.tf](provider.tf)      # AWS provider settings
-├── [variable.tf](variable.tf)      # Terraform variables
-├── [Dockerfile](Dockerfile)        # Defines the container image
-├── [Jenkinsfile](Jenkinsfile)      # CI/CD pipeline automation
-├── [index.html](index.html)        # Frontend banking app
+
+##  Features
+- **Automated Infrastructure Provisioning** (Terraform)
+- **Containerized Deployment** (Docker, Docker Hub)
+- **CI/CD Integration** (Jenkins)
+- **Static Website Hosting** (AWS S3)
+- **Secure & Scalable Architecture**
+
+##  Setup & Deployment
+### 1️ Clone the Repository
+```sh
+git clone https://github.com/your-repo/banking-app.git
+cd banking-app
 ```
 
-## Technologies Used
-- **Terraform** - Infrastructure as Code (IaC) for AWS provisioning.
-- **Docker** - Containerization of the application.
-- **Jenkins** - CI/CD automation pipeline.
-- **AWS** - Cloud provider for hosting services.
-- **HTML/CSS/JavaScript** - Frontend banking app.
+### 2️ Configure AWS Credentials in Jenkins
+- Add `AWS_ACCESS_KEY_ID_1` in Jenkins credentials.
 
-## Deployment Workflow
-1. **Infrastructure Provisioning**: Jenkins executes `terraform apply` to create AWS resources.
-2. **Build & Push Docker Image**: Jenkins builds the Docker image and pushes it to Docker Hub.
-3. **Application Deployment**: Jenkins deploys the application on an AWS EC2 instance.
+### 3️ Run the Jenkins Pipeline
+1. Open Jenkins.
+2. Configure the multibranch pipeline.
+3. Run the pipeline to deploy.
 
-## Files Breakdown
-### Terraform Files
-- **[backend.tf](backend.tf)**: Configures Terraform backend (S3 bucket for storing state).
-- **[main.tf](main.tf)**: Defines AWS resources (EC2, security groups, S3, IAM roles, etc.).
-- **[provider.tf](provider.tf)**: Specifies AWS provider and region.
-- **[variable.tf](variable.tf)**: Declares variables (e.g., instance type, bucket name).
+### 4️ Access the Banking App
+- Open a browser and go to:  
+  **[http://sefali-banking-app-3a04c331.s3-website.ap-south-1.amazonaws.com](http://sefali-banking-app-3a04c331.s3-website.ap-south-1.amazonaws.com)**
 
-### Dockerfile
-Defines a Docker image for the banking app:
-- Uses a base image (e.g., Node.js, Nginx).
-- Copies application files.
-- Exposes necessary ports.
-- Runs the application inside a container.
+##  Walkthrough of the Project
+### 1️ Terraform Infrastructure Setup
+- `main.tf`: Defines VPC, subnets, security groups, and S3 bucket.
+- `provider.tf`: Configures AWS provider.
+- `variable.tf`: Stores AWS region, instance types, and other variables.
+- `backend.tf`: Stores Terraform state in S3.
 
-### Jenkinsfile
-Automates the CI/CD pipeline:
-1. **Terraform Setup**: Initializes and applies Terraform.
-2. **Docker Build & Push**: Builds and pushes the container to Docker Hub.
-3. **Deployment**: Runs the containerized app on an EC2 instance.
+### 2️ Dockerization
+- `Dockerfile`: Builds a container for the banking app.
+- Runs an NGINX web server serving `index.html`.
+- Exposes port 80 for the web application.
 
-### index.html
-A simple web interface for the banking app that allows:
-- Checking account balance.
-- Depositing and withdrawing money.
-- Animated enhancements for better user experience.
+### 3️ Jenkins CI/CD Pipeline
+- `Jenkinsfile`: Automates Terraform apply, Docker build & push, and deployment.
+- Uses `AWS-DOCKER-CREDENTIALS` for authentication.
+- Ensures deployment only after merging to `main`.
 
-## How to Run Locally
-1. Clone the repository:
-   ```sh
-   git clone <repo-url>
-   cd Banking-App-Deployment
-   ```
-2. Build and run the Docker container:
-   ```sh
-   docker build -t banking-app .
-   docker run -p 8080:80 banking-app
-   ```
-3. Open a browser and go to:
-   ```
-   http://localhost:8080
-   ```
+### 4️ Hosting and Deployment
+- Terraform provisions AWS resources.
+- Jenkins builds and deploys the app.
+- App is accessible via **S3 Static Website Hosting**.
 
-## Animated Banking App Interface
+##  Animated Banking App Interface
+[![Banking App Animation](http://sefali-banking-app-3a04c331.s3-website.ap-south-1.amazonaws.com)](http://sefali-banking-app-3a04c331.s3-website.ap-south-1.amazonaws.com)
 
-### Preview the Animation
-
-
-[![Banking App Animation](https://user-images.githubusercontent.com/example/animated-banking.gif)](https://user-images.githubusercontent.com/example/animated-banking.gif)
-
-## Conclusion
-This project provides a scalable and automated deployment of a simple banking application using DevOps best practices. 🚀
+##  Conclusion
+This project provides a **scalable, automated, and DevOps-driven deployment** of a simple banking application. 🚀
