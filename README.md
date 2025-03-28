@@ -1,6 +1,7 @@
 # Banking App Deployment
 
-This project automates the deployment of a simple banking application using Jenkins and Terraform.
+This project automates the deployment of a Banking Web Application using Terraform, Docker, and Jenkins. 
+It provisions infrastructure on AWS, builds a containerized application, and deploys it efficiently.
 
 ## Features
 - **Automated Deployment:** Fully automated using Jenkins CI/CD pipeline.
@@ -57,7 +58,11 @@ This project automates the deployment of a simple banking application using Jenk
 
 ## Animated Banking App Interface
 ### Preview the Animation
-![Banking App UI](http://sefali-banking-app-3a04c331.s3-website.ap-south-1.amazonaws.com)
+
+![Banking App Animation](animation.gif)
+
+[View Live Banking App](http://sefali-banking-app-3a04c331.s3-website.ap-south-1.amazonaws.com)
+
 
 ## Conclusion
 This project provides a fully automated deployment of a banking application using Jenkins, Terraform, Docker, and AWS. 🚀
