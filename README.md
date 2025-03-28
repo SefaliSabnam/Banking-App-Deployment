@@ -1,11 +1,30 @@
 # Banking App Deployment
 
-This project automates the deployment of a Banking Web Application using Terraform, Docker, and Jenkins. 
+This project automates the deployment of a Banking Web Application using Terraform, Docker, and Jenkins.
 It provisions infrastructure on AWS, builds a containerized application, and deploys it efficiently.
+
+## Prerequisites
+- **AWS Account** with access to S3
+- **Jenkins** installed and configured
+- **Terraform** installed (latest version recommended)
+- **Docker** installed and configured
+- **GitHub** repository with application code
+- **AWS IAM credentials** configured in Jenkins
+- **Docker Hub account** for storing container images
+
+## Table of Contents
+1. [Features](#features)
+2. [Technologies Used](#technologies-used)
+3. [Project Structure](#project-structure)
+4. [File Links](#file-links)
+5. [Walkthrough](#walkthrough)
+6. [Deployment Steps](#deployment-steps)
+7. [Animated Banking App Interface](#animated-banking-app-interface)
+8. [Conclusion](#conclusion)
 
 ## Features
 - **Automated Deployment:** Fully automated using Jenkins CI/CD pipeline.
-- **Infrastructure as Code:** Terraform provisions AWS resources (EC2, S3, etc.).
+- **Infrastructure as Code:** Terraform provisions AWS resources [S3]
 - **Containerized Application:** Docker builds and deploys the banking app.
 - **Cloud Hosting:** Application hosted on AWS S3 for static content.
 - **Scalable & Secure:** AWS best practices for high availability and security.
@@ -16,7 +35,6 @@ It provisions infrastructure on AWS, builds a containerized application, and dep
 - **Docker** - Containerization
 - **AWS S3** - Hosting static content
 - **GitHub** - Version control
-
 
 ## Project Structure
 
@@ -31,7 +49,7 @@ It provisions infrastructure on AWS, builds a containerized application, and dep
 ├── variable.tf      # Terraform variables
 ```
 
-###  File Links
+### File Links
 - [backend.tf](backend.tf)
 - [Dockerfile](Dockerfile)
 - [index.html](index.html)
@@ -71,6 +89,6 @@ It provisions infrastructure on AWS, builds a containerized application, and dep
 
 [View Live Banking App](http://sefali-banking-app-3a04c331.s3-website.ap-south-1.amazonaws.com)
 
-
 ## Conclusion
 This project provides a fully automated deployment of a banking application using Jenkins, Terraform, Docker, and AWS. 🚀
+
