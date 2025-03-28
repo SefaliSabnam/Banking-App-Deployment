@@ -73,21 +73,22 @@ pipeline {
             }
         }
 
-stage('Application Deployment to S3') {
-    when {
-        expression { env.BRANCH_NAME == 'main' }
-    }
-    steps {
-        script {
-            withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
-                sh """
-                    aws s3 cp index.html s3://${env.S3_BUCKET}/index.html
-                """
-                echo "Application successfully deployed to: http://${env.S3_BUCKET}.s3-website.ap-south-1.amazonaws.com"
+        stage('Application Deployment to S3') {
+            when {
+                expression { env.BRANCH_NAME == 'main' }
+            }
+            steps {
+                script {
+                    withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
+                        sh """
+                            aws s3 cp index.html s3://${env.S3_BUCKET}/index.html
+                        """
+                        echo "Application successfully deployed to: http://${env.S3_BUCKET}.s3-website.ap-south-1.amazonaws.com"
+                    }
+                }
             }
         }
     }
-}
 
     post {
         always {
