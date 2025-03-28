@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'github-token', url: 'https://github.com/SefaliSabnam/Demo-docker.git', branch: env.BRANCH_NAME
+                git credentialsId: 'github-token', url: 'https://github.com/SefaliSabnam/DEPLOYMENT.git', branch: env.BRANCH_NAME
             }
         }
 
