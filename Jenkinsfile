@@ -20,7 +20,7 @@ pipeline {
                 script {
                     sh 'pwd'
                     sh 'ls -la'
-                    sh 'ls -la terraform || true'  // Check if terraform directory exists
+                    sh 'ls -la terraform || true'  
                 }
             }
         }
@@ -29,7 +29,7 @@ pipeline {
             steps {
                 script {
                     withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
-                        sh 'terraform init'  // Run in the correct directory
+                        sh 'terraform init'  
                     }
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
             steps {
                 script {
                     withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
-                        sh 'terraform plan -out=tfplan'  // Ensure .tf files exist
+                        sh 'terraform plan -out=tfplan'  
                     }
                 }
             }
