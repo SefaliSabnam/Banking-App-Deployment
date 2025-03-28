@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket_prefix = "sefali-terraform-state-"  # Generates a unique bucket name dynamically
-  force_destroy = true  # Optional: Allows bucket deletion if necessary
+  bucket_prefix = "sefali-terraform-state-file" 
+  force_destroy = true  
 
   tags = {
     Name        = "Terraform State Bucket"
