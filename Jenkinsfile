@@ -66,8 +66,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'DOCKER_HUB_TOKEN') {
-                        sh "docker build -t ${DOCKER_IMAGE} ."
-                        sh "docker push ${DOCKER_IMAGE}"
+                        sh "sudo docker build -t ${DOCKER_IMAGE} ."
+                        sh "sudo docker push ${DOCKER_IMAGE}"
                     }
                 }
             }
