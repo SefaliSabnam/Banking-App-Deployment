@@ -7,7 +7,7 @@ resource "random_id" "bucket_suffix" {
 }
 
 module "s3_bucket" {
-  source          = "./modules/s3"
+  source = "../modules/s3"
   bucket_name     = "sefali-banking-app-${random_id.bucket_suffix.hex}"
   enable_versioning = true
 }
