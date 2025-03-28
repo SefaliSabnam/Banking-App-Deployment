@@ -9,7 +9,19 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: 'github-token', url: 'https://github.com/SefaliSabnam/DEPLOYMENT.git', branch: env.BRANCH_NAME
+                script {
+                    git credentialsId: 'github-token', url: 'https://github.com/SefaliSabnam/DEPLOYMENT.git', branch: env.BRANCH_NAME
+                }
+            }
+        }
+
+        stage('Debug Workspace') {
+            steps {
+                script {
+                    sh 'pwd'
+                    sh 'ls -la'
+                    sh 'ls -la terraform || true'  // Check if terraform directory exists
+                }
             }
         }
 
@@ -17,9 +29,7 @@ pipeline {
             steps {
                 script {
                     withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
-                        dir('terraform') {
-                            sh 'terraform init'
-                        }
+                        sh 'terraform init'  // Run in the correct directory
                     }
                 }
             }
@@ -29,9 +39,7 @@ pipeline {
             steps {
                 script {
                     withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
-                        dir('terraform') {
-                            sh 'terraform plan -out=tfplan'
-                        }
+                        sh 'terraform plan -out=tfplan'  // Ensure .tf files exist
                     }
                 }
             }
@@ -43,10 +51,8 @@ pipeline {
             }
             steps {
                 script {
-                    withAWS(credentials: AWS-DOCKER-CREDENTIALS, region: 'ap-south-1') {
-                        dir('terraform') {
-                            sh 'terraform apply -auto-approve tfplan'
-                        }
+                    withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
+                        sh 'terraform apply -auto-approve tfplan'
 
                         // Fetch dynamically created S3 bucket name
                         env.S3_BUCKET = sh(script: "terraform output -raw bucket_name", returnStdout: true).trim()
@@ -60,8 +66,8 @@ pipeline {
             steps {
                 script {
                     docker.withRegistry('https://index.docker.io/v1/', 'DOCKER_HUB_TOKEN') {
-                        sh "docker build -t ${env.DOCKER_IMAGE} ."
-                        sh "docker push ${env.DOCKER_IMAGE}"
+                        sh "docker build -t ${DOCKER_IMAGE} ."
+                        sh "docker push ${DOCKER_IMAGE}"
                     }
                 }
             }
@@ -73,7 +79,7 @@ pipeline {
             }
             steps {
                 script {
-                    withAWS(credentials: AWS-DOCKER-CREDENTIALS, region: 'ap-south-1') {
+                    withAWS(credentials: AWS_CREDENTIALS, region: 'ap-south-1') {
                         sh """
                             aws s3 cp index.html s3://${env.S3_BUCKET}/index.html --acl public-read
                         """
