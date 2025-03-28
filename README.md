@@ -6,13 +6,13 @@ This project automates the deployment of a Banking Web Application using **Terra
 ## Project Structure
 ```
 📂 Banking-App-Deployment
-├── backend.tf        # Terraform backend configuration
-├── main.tf           # Terraform infrastructure configuration
-├── provider.tf       # AWS provider settings
-├── variable.tf       # Terraform variables
-├── Dockerfile        # Defines the container image
-├── Jenkinsfile       # CI/CD pipeline automation
-├── index.html        # Frontend banking app
+├── [backend.tf](backend.tf)        # Terraform backend configuration
+├── [main.tf](main.tf)              # Terraform infrastructure configuration
+├── [provider.tf](provider.tf)      # AWS provider settings
+├── [variable.tf](variable.tf)      # Terraform variables
+├── [Dockerfile](Dockerfile)        # Defines the container image
+├── [Jenkinsfile](Jenkinsfile)      # CI/CD pipeline automation
+├── [index.html](index.html)        # Frontend banking app
 ```
 
 ## Technologies Used
@@ -29,10 +29,10 @@ This project automates the deployment of a Banking Web Application using **Terra
 
 ## Files Breakdown
 ### Terraform Files
-- **backend.tf**: Configures Terraform backend (S3 bucket for storing state).
-- **main.tf**: Defines AWS resources (EC2, security groups, S3, IAM roles, etc.).
-- **provider.tf**: Specifies AWS provider and region.
-- **variable.tf**: Declares variables (e.g., instance type, bucket name).
+- **[backend.tf](backend.tf)**: Configures Terraform backend (S3 bucket for storing state).
+- **[main.tf](main.tf)**: Defines AWS resources (EC2, security groups, S3, IAM roles, etc.).
+- **[provider.tf](provider.tf)**: Specifies AWS provider and region.
+- **[variable.tf](variable.tf)**: Declares variables (e.g., instance type, bucket name).
 
 ### Dockerfile
 Defines a Docker image for the banking app:
@@ -68,6 +68,10 @@ A simple web interface for the banking app that allows:
    ```
    http://localhost:8080
    ```
+
+## Animated Banking App Interface
+
+![Banking App Animation](https://user-images.githubusercontent.com/example/animated-banking.gif)
 
 ## Conclusion
 This project provides a scalable and automated deployment of a simple banking application using DevOps best practices. 🚀
