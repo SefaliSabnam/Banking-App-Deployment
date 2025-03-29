@@ -62,7 +62,7 @@ It provisions infrastructure on AWS, builds a containerized application, and dep
 
 ### Automated CI/CD Pipeline (Jenkins)
 1. **Infrastructure Provisioning:**
-   - Jenkins fetches the Terraform code and runs `terraform init`, `terraform plan`, and `terraform apply` to provision AWS resources (EC2, S3).
+   - Jenkins fetches the Terraform code and runs `terraform init`, `terraform plan`, and `terraform apply` to provision AWS resources (S3).
    
 2. **Building the Application:**
    - Jenkins retrieves the application code, builds the container image using Docker, and pushes it to Docker Hub.
