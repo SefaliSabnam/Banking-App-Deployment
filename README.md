@@ -3,6 +3,11 @@
 This project automates the deployment of a Banking Web Application using Terraform, Docker, and Jenkins.
 It provisions infrastructure on AWS, builds a containerized application, and deploys it efficiently.
 
+## Architecture Diagram
+
+![Banking App Deployment Architecture](docker-terr-jenk.drawio.png)
+
+
 ## Prerequisites
 - **AWS Account** with access to S3
 - **Jenkins** installed and configured
